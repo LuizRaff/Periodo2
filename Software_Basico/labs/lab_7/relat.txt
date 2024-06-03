@@ -1,0 +1,11 @@
+1)
+ao comparar os codigos eu consegui ver / entender a utilizacao de ponteiros em assembly. Tambem o funcionamento do while, que seria uma constante comparacao, muito parecido com o for.
+
+2)
+vemos que o curto circuito acontece quando chegamos o { e }. nao precisamo ver se nao nenhum dos dois.
+
+3)
+este foi o codigo mais simples ate entao, apenas salvamos um contador e multiplicamos ele usando o eax, que sera destruido de qualquer jeito.
+
+4)
+este foi o mais complicado, pois tivemos que usar diversas registradores auxiliares para fazer o jmp entre as variaveis na lista e tambem para fazermos a indexcacao.

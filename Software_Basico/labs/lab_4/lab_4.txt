@@ -1,0 +1,22 @@
+1)
+char tem 1 byte
+short tem 2 bytes
+int tem 4 bytes
+Os numeros negativos utilizam aritmetrica complementar, no papel pegamos o numero em seu estado positivo em binario. invertemos ele e dpois somamos 1.
+
+2)
+'l' e 'k' tem o mesmo valor em binario, entretanto, o bit mais significativo de 'l' e utilizado para exibir qual sinal aquele numero tem. 
+
+3)
+
+4)
+A diferença entre os programas são as declarações das variaveis 'x' e 'y'. No primeiro programa das duas variaveis são declaradas como um 'Signed Int', então no momento de fazer a comparação ele entende que 'x' = -1 e 'y' = 2.
+
+No segundo programa, as duas variaveis estão sendo declaradas como um 'Unsigned Int'. Por conta disso 'x' != -1 e sim = 4,294,967,295, tornando ele maior que 'y'. Isso acontece porque uma variavel 'Unsigned Int' o bit mais significativo não e usada para definir o sinal e sim como uma potencia de 2.
+
+No terceiro programas as duas variaveis estao sendo declaradas de formas diferentes, por conta disso há um typecast na hora de fazer a comparação. Dando um valor falso positivo.
+
+5)
+sc = -1 (char --> 1 byte)
+1 = 00000001
+-1 = 11111110 + 1 = 11111111 = 0xFF

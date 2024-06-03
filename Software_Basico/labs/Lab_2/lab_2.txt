@@ -1,0 +1,25 @@
+Nome: Luiz Eduardo Raffaini
+Mat: 2220982    Turma: 3WB
+
+1.
+a) Um inteiro ocupa 4 bytes na memoria, isso pode ser visto pelo numero de printf ocorridos. Importante notar que os bytes sao sequenciais na memoria. Tambem o meu OS tem a arquitetura Little Endian.
+
+b) Um long e igual o inteiro, ele ocupa 4 bytes na memoria de forma sequencial.
+
+c) O short ele ocupa apenas 2 bytes na memoria de forma sequencial.
+
+d) O char ocupa 1 byte na memoria. Ao declarar ele como um caractere '1', a memoria salva essa variavel como o valor correspondente na tabela ASCII, 31. Porem, se declaramos como um inteiro 1, na memoria fica salvo o mesmo.
+
+e) A string ela guarda os caracteres em ordem na memoria e por conta de como a string e montada, no final temos um byte nulo.
+'A' = 41
+' ' = 21
+'\n'= 0a
+'$' = 24
+
+2.
+a) A funcao string2num converte os numeros de uma string em inteiros.
+
+A variavel 'a' ela esta sendo utilizada como posicionador, botando os digitos em seuas posicoes corretas.
+
+O calculo '*s - '0'' esta subtraindo o valor ascii do caractere '*s' com o valor ascii do caractere '0' que e 48. Assim corretamente traduzindo de caractere para numero.
+

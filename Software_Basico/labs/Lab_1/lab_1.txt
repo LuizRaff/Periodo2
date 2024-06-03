@@ -1,0 +1,27 @@
+Nome: Luiz Eduardo Raffaini
+Mat: 2220982    Turma: 3WB
+
+1. 
+Abrindo o terminal nos deparamos com um espaço para digitar e o diretorio que estamos.
+
+2. 
+Escrevendo "pwd" e clicando enter, o terminal nos retorna com o diretorio que estamos. 
+
+Escrevendo "ls" e clicando enter, o terminal nos retorna com todos os arquivos e diretorios acessiveis dentro de onde estamos.
+
+3. 
+O comando "mkdir" (make directory) ele cria um diretorio dentro do diretorio atual, e usando o comando cd podemos tanto entrar em um diretorio usando, por exemplo, "cd inf1018" para entrar no diretorio "inf1018". Tambem podemos usar "cd .." para voltar um diretorio.
+
+4. 
+a) Ao analizar o programa nos percebemos que ele esta recebendo uma variavel Float e esta adicionando 1 a ela, e dps esta exibindo ela para o usuario.
+
+Caso voce execute o programa sem nenhum input de variavel, entao "./ex1 " ele imprime como o programa deveria ser executado.
+
+Caso voce execute o programa sem os caracteres "./" o terminal mostra um erro, pois esses dois caracetres falam pro terminal que voce executara um arquivo. Sem eles ele entende como um commando do terminal.
+
+b) O programa funciona igual, pois a funcao "foo" esta sendo importada do arquivo "labaux.c", por isso temos que compilar os dois arquivos.
+
+c) Sem declarar o cabecalho da funcao "foo" o programa da erro, pois no "./ex3.c" ele requer a funcao "foo" mas ela nao esta sendo importada de nenhum outro arquivo e tambem nao foi construida dentro do mesmo. Entretanto o arquivo executavel ainda e criado e ele ainda executa, mas nao funciona como queremos.
+
+5. A variavel "c1" e "c2" sao caracteres e ocupam 1 byte na memoria, enquanto a variavel "i" e um inteiro qual ocupa 4 bytes na memoria. Ja o vetor "v", ele esta ocupando 2 bytes na memoria, 1 para o primeiro valor e o outro para um byte  nulo, isso acontece por conta de como os vetores sao salvos e construidos na memoria. 
+

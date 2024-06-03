@@ -1,0 +1,7 @@
+1) Foi feito uma analise no 'hexdump' do arquivo 'bufbomb.c', nesta analise foi coletado o endereço da função 'Danger'. Então nos podemos criar um arquivo 'stringinvasoraDanger' no qual tem os bytes do buffer e do rbp zerados, mas o endereço da função foi inserido no local da pilha. Transformamos o arquivo em um '.raw' e entao executamos o 'bufbomb.c' com ele, isso causa o programa a executar a função 'Danger' de forma indesejada.
+
+2) A mesma coisa da questão 1 foi feita para a questão dois, entretanto pegamos o endereço da função 'Fizz' inves da função 'Danger'. E repetimos o processo para criar o arquivo '.raw' e executamos com 'bufbomb.c' causando a função 'Fizz' ser executada de forma indesejada.
+
+3) Nesta questão foi feito de uma forma diferente, primeiro vamos criar um arquivo 'codigo.s' no qual tera funcoes que serao executadas no 'buffbomb.c'. Para fazer isso precisamos transformar em um arquivo objeto para pegar tanto as funções em formas de bytes, mas para frente essas funções serão inseridas no 'buffer' da função 'buffbomb.c'.
+
+Agora teremos que pegar o endereço da função 'getbuf.c' e colocaremos no rbp, e isso fara ser imprimido na tela 0x01020304. E por final iremos colocar o endereço da função fizz na pilha, para então ela ser executada.

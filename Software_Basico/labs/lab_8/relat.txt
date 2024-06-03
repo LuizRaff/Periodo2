@@ -1,0 +1,5 @@
+1)
+Como visto previamente em sala a funcao 'system' recebe um parametro, o commando que sera executado. Assim sabendo que ela recebera apenas um parametro, apenas enviaremos o que queremos executar no primeiro parametro da funcao %rdi.
+
+2)
+Nesta questao eu usei os registradores r12 como meu ponteiro e o ebx como meu contador. Tambem tive que declarar o r13d para servir como a variavel LIM definida no programa C. Apos eu chamei filtro e usei eax para egar o valor de retorno e dei print utilizando o mesmo, pois n tem problema nos perdemos eax.
