@@ -1,0 +1,3 @@
+1) Como pode-se ver com a dica, quando multiplicamos a conta do ponto flutuante por dois, nos temos a exponencial somada por 1. Então nos vamos dividir o float usando os macros. Depois somamos 1 ao exponencial, e remontamos usando o makefloat() macro. 
+
+2) Na segunda questão temos que fazer a converção IEEE 174. Primeiro pegamos o sinal, depois nos pegamos o exponencial fazendo uma varredura no binario do Int, achando a posicao do bit mais significativo, excluindo o ultimo que e o sinal, e somando 127. E com o restante do binario, nos movemos para a parte fracionaria. Vale notar, que se o binario nao couber em 24 bits, uma parte sera perdida. Assim criando uma margem de erro. 

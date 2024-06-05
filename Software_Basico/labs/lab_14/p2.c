@@ -11,44 +11,39 @@ typedef union {
   unsigned int i;
 } U;
 
-void exibe_bin(unsigned int j){
-  for (int i = 0; i < 31; ++i)
-  {
-    printf("%d", j & 1);
-    j = j >> 1;
-  }
-  printf("\n");
-}
-
 float int2float(int i){
-  if(i == 0){
-    return 0.0f;
-  };
+  if(i == 0) return 0.0;
 
   unsigned int signal = getsig(i);
-  if(signal){
-    i = abs(i);
-  }
-  printf("\n");
-  unsigned int exp = i;
-  int pos = 0;
-  while(exp != 1){
+  if(signal) i = -i;
+
+  unsigned int pos = 0, msk = i;
+  while(msk != 1 ){
     pos++;
-    exp = exp >> 1;
+    msk = msk >> 1;
   }
-  exp = pos + 127;
 
-  unsigned int msk = 0;
+  unsigned int exp = pos + 127;
 
-  for (int j = 0; j < pos; ++j)
+  msk = 1;
+  for (int i = 0; i < pos; ++i)
   {
     msk = msk << 1;
     msk = msk | 1;
   }
+  //msk = ~(msk << (31 - pos));
 
-  unsigned int mantissa = i & msk;
   U u;
-  u.i = makefloat(signal, exp, mantissa);
+  unsigned int mantissa;
+  if(pos < 24){
+    printf("%d\n", pos);
+    mantissa = (msk & i);
+    u.i = makefloat(signal, exp, mantissa << (23 - pos));
+  }else{
+    printf("%d\n", pos);
+    mantissa = (msk & i) >> (31 - 24);
+    u.i = makefloat(signal, exp + 1, mantissa >> (23 - pos));
+  }
   return u.f;
 }
 
