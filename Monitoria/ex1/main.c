@@ -1,22 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
 
-int count;
+struct lst{
+	int inf;
+	struct lst* prox;
+};
 
-void increment(){
-    count++;
-}
+typedef struct lst Lst;
 
-void decrement(){
-    count--;
-}
+Lst* lst_insere(Lst* lista, int info);
+void lst_imprime(Lst* lista);
 
 int main(void){
-    count = 0;
-    increment();
-    printf("count: %d", count);
+	Lst* a = (Lst*)malloc(sizeof(Lst));
+	assert(a);
+	Lst* b = (Lst*)malloc(sizeof(Lst));
+	assert(b);
+	a->inf = 45;
+	b->inf = 23;
 
-    decrement();
-    printf("count: %d", count);
+	a->prox = b;
+	b->prox = NULL;
 
-    return 0;
+	Lst* lista;
+	lista = a;
+
+	lista = lst_insere(lista, 40);
+
+	lst_imprime(lista);
+
+	return 0;
+}
+
+Lst* lst_insere(Lst* lista, int info){
+	Lst* a = (Lst*)malloc(sizeof(Lst));
+	a->inf = info;
+	a->prox = lista;
+
+	return a;
+}
+
+void lst_imprime(Lst* lista){
+	while(lista != NULL){
+		printf("%d\n", lista->inf);
+		lista = lista->prox;
+	}
+
 }

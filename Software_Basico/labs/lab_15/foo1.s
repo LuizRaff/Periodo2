@@ -11,8 +11,8 @@ foo1:
 	movq	%rsp, %rbp
 	subq	$16, %rsp
 
-	mov	%xmm0, -4(%rbp)
-	mov	%xmm1, -8(%rbp)
+	movss	%xmm0, -4(%rbp)
+	movss	%xmm1, -8(%rbp)
 
 	call sin
 

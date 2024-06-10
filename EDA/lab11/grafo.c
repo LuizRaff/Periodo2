@@ -96,54 +96,71 @@ void grafoMostra (Grafo* grafo) {
   }
 }
 
-Grafo* primArvoreCustoMinimo (Grafo* g, int inicial) {
-  /* Cria array auxiliar com nos ja inseridos no heap, valor passa a ser 1 no
-     momento em que for adicionado no heap. Previne um vertice de ser adicionado
-     novamente no heap apos ser removido. */
-  int* inserido = (int*)malloc(g->nv*sizeof(int));
-  for(int i = 0; i < g->nv; i++)
+Grafo* primArvoreCustoMinimo(Grafo* g, int inicial) {
+  int* inserido = (int*)malloc(g->nv * sizeof(int));
+  for (int i = 0; i < g->nv; i++) {
     inserido[i] = 0;
+  }
 
   Heap* heap = heap_cria(g->nv, g->nv);
-  /* Cria o heap com os vertices a partir do vertice inicial. */
-  // COMPLETAR
+  heap_insere(heap, 0, inicial, inicial);
 
   Grafo *acm = grafoCria(g->nv);
-  /* Cria a arvore de custo minimo */
-  while (!heap_vazio(heap)) {
-    /* Busca proximo vertice (ainda nao adicionado na acm) com aresta de menor peso no heap. */
-    // COMPLETAR
 
-    /* Adiciona aresta na vizinhanca do grafo acm (adicionando o novo vertice). */
-    // COMPLETAR
-
-    /* Verifica vizinhos do vertice adicionado e atualiza o heap. */
-    // COMPLETAR
+  while (heap_vazio(heap) == NULL) {
+    int v1, v2;
+    int peso = heap_remove(heap, &v1, &v2);
+    if (!inserido[v1]) {
+      inserido[v1] = 1;
+      if (v1 != v2) {
+        acm->viz[v1] = criaViz(acm->viz[v1], v2, peso);
+        acm->viz[v2] = criaViz(acm->viz[v2], v1, peso);
+        acm->na++;
+      }
+      Viz* vizinho = g->viz[v1];
+      while (vizinho != NULL) {
+        if (inserido[vizinho->noj] == NULL) {
+          heap_insere(heap, vizinho->peso, vizinho->noj, v1);
+        }
+        vizinho = vizinho->prox;
+      }
+    }
   }
-    
+
   heap_libera(heap);
+  free(inserido);
   return acm;
 }
 
-Grafo* kruskalArvoreCustoMinimo (Grafo* g) {
-  /* Cria a estrutura de uniao e busca com a particao. */
+Grafo* kruskalArvoreCustoMinimo(Grafo* g) {
   UniaoBusca *ub = ub_cria(g->nv);
 
   Heap *heap = heap_cria(g->na, 0);
-  /* Cria o heap com as arestas. */
-  // COMPLETAR
+  for (int i = 0; i < g->nv; i++) {
+    Viz* vizinho = g->viz[i];
+    while (vizinho != NULL) {
+      int v1 = i;
+      int v2 = vizinho->noj;
+      int peso = vizinho->peso;
+      if( v1 > v2){
+        heap_insere(heap, peso, v2, v1);
+      }
+      vizinho = vizinho->prox;
+    }
+  }
 
   Grafo *acm = grafoCria(g->nv);
-  /* Cria a arvore de custo minimo */
   while (!heap_vazio(heap) && acm->na < (g->nv - 1)) {
-    /* Retira proxima aresta. */
-    // COMPLETAR
-
-    /* Verifica se aresta deve ser adicionada no grafo acm. Se for,
-       realiza a insercao, utilizando a estrutura de Uniao e Busca. */
-    // COMPLETAR
+    int v1, v2;
+    int peso = heap_remove(heap, &v1, &v2);
+    if (ub_busca(ub, v1) != ub_busca(ub, v2)) {
+      acm->viz[v1] = criaViz(acm->viz[v1], v2, peso);
+      acm->viz[v2] = criaViz(acm->viz[v2], v1, peso);
+      acm->na++;
+      ub_uniao(ub, v1, v2);
+    }
   }
-  
+
   heap_libera(heap);
   ub_libera(ub);
   return acm;

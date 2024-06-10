@@ -69,6 +69,7 @@ Heap* heap_cria (int heap_max, int n1map_max) {
   h->max = heap_max;
   h->pos = 0;
   h->itens = (struct item*)malloc(heap_max*sizeof(struct item)); 
+  h->mapn1topos = NULL;
   if (n1map_max > 0) {
     h->mapn1topos = (int*)malloc(n1map_max*sizeof(int)); 
     for (int i = 0; i < n1map_max; i++) {
